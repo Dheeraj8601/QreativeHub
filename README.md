@@ -10,6 +10,10 @@ QreativeHub is a versatile and innovative QR code generator designed to go beyon
 
 Explore the endless possibilities of QR code design with QreativeHub. Elevate your QR code experience and make a lasting impression!
 
+### Hosted Website:
+Explore the QreativeHub QR Code Generator live at [qreativehub2.vercel.app](https://qreativehub2.vercel.app).
+Repository [qreativehub2](https://github.com/Dheeraj8601/QreativeHub-2).
+
 ## Technologies Used:
 - Node.js
 - Express.js
@@ -27,6 +31,4 @@ git clone https://github.com/Dheeraj8601/QreativeHub.git
 cd QreativeHub
 
 
-## Hosted Website:
-Explore the QreativeHub QR Code Generator live at [qreativehub2.vercel.app](https://qreativehub2.vercel.app).
-Repository [qreativehub2](https://github.com/Dheeraj8601/QreativeHub-2).
+
