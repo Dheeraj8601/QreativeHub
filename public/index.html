@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QreativeHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <p>Enter your text or URL</p>
+        <input type="text" placeholder="Text or URL" id="qrText" class="input-field">
+        <div id="imgBox">
+            <img src="" id="qrImage" onload="imageLoaded()">
+        </div>
+
+        <button onclick="generateQR()">Generate QR Code</button>
+        <button onclick="downloadQR()" class="download-btn" id="downloadBtn" disabled>Download QR Code</button>
+        <p id="warningMessage" class="warning"></p>
+    </div>
+
+    <script>
+        let imgBox = document.getElementById("imgBox");
+        let qrImage = document.getElementById("qrImage");
+        let qrText = document.getElementById("qrText");
+        let warningMessage = document.getElementById("warningMessage");
+
+        function generateQR() {
+            if (qrText.value.length > 0) {
+                qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?format=png&size=150x150&data=" + encodeURIComponent(qrText.value);
+                imgBox.classList.add("show-img");
+                warningMessage.textContent = "";
+                qrText.classList.remove("warning", 'error');
+            } else {
+                qrText.classList.add("warning", "error");
+                warningMessage.textContent = "Input is required!";
+                setTimeout(() => {
+                    warningMessage.textContent = "";
+                    qrText.classList.remove('warning', 'error');
+                }, 2000);
+            }
+        }
+
+        function imageLoaded() {
+            // Enable the download button after the image is fully loaded
+            document.getElementById("downloadBtn").disabled = false;
+        }
+
+        async function downloadQR() {
+            var result = confirm("Are you sure?");
+            if (result) {
+                if (qrImage.src !== "") {
+                    try {
+                        // Make a server request to get the file path
+                        const response = await fetch('/generateQR', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams({
+                                text: qrText.value,
+                            }),
+                        });
+
+                        const data = await response.json();
+                        const filePath = data.filePath;
+
+                        // Create a link element and trigger a download
+                        const link = document.createElement('a');
+                        link.href = filePath;
+                        link.download = 'qrcode.png';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } catch (error) {
+                        console.error("Error downloading QR code:", error);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

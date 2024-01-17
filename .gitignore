@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+
+# Generated files
+public/QR\ generator/qrcode.png
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
