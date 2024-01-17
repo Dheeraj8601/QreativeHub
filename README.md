@@ -23,5 +23,5 @@ Explore the endless possibilities of QR code design with QreativeHub. Elevate yo
 
 ### Clone the Repository:
 ```bash
-git clone https://github.com/your-username/QreativeHub.git
+git clone https://github.com/Dheeraj8601/QreativeHub.git
 cd QreativeHub
