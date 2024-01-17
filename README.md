@@ -25,3 +25,8 @@ Explore the endless possibilities of QR code design with QreativeHub. Elevate yo
 ```bash
 git clone https://github.com/Dheeraj8601/QreativeHub.git
 cd QreativeHub
+
+
+## Hosted Website:
+Explore the QreativeHub QR Code Generator live at [qreativehub2.vercel.app](https://qreativehub2.vercel.app).
+Repository [qreativehub2](https://github.com/Dheeraj8601/QreativeHub-2).
